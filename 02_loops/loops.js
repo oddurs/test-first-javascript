@@ -32,7 +32,7 @@ function sum (arr) {
 function paramify (hash) {
 	out = [];
 	for (obj in hash) {
-		if (hash.hasOwnProperty) {
+		if (hash.hasOwnProperty(obj)) {
 			out.push(obj + "=" + hash[obj]);
 		}
 	}
