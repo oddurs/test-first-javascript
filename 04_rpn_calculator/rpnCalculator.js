@@ -2,53 +2,42 @@
 
 // Constructor function that can add and subtract values.
 function Calculator() {
-	this.stack = [];
-	this.value = function () {
-		if (this.stack == []) {
-			return "calculator is empty";
-		} else {
-			return this.stack[this.stack.length - 1];
-		}
-	};
-	this.push = function (num) {
-		this.stack.push(num);
-	};
-	this.plus = function () {
-		if (this.stack.length > 0) {
-			// var opOne = this.stack.pop();
-			// var opTwo = this.stack.pop();
-			this.stack.push(this.stack.pop() + this.stack.pop());
-		} else {
-			throw "calculator is empty";
-		}
-	};
-	this.minus = function () {
-		if (this.stack.length > 0) {
-			var opOne = this.stack.pop();
-			var opTwo = this.stack.pop();
-			this.stack.push(opTwo - opOne);
-		} else {
-			throw "calculator is empty";
-		}
-	};
-	this.times = function () {
-		if (this.stack.length > 0) {
-			var opOne = this.stack.pop();
-			var opTwo = this.stack.pop();
-			this.stack.push(opTwo * opOne);
-		} else {
-			throw "calculator is empty";
-		}
-	};
-	this.divide = function () {
-		if (this.stack.length > 0) {
-			var opOne = this.stack.pop();
-			var opTwo = this.stack.pop();
-			this.stack.push(opTwo / opOne);
-		} else {
-			throw "calculator is empty";
-		}
-	};
+	this.stack = []; // The stack that numbers get pushed to
+	this.cache = []; // Temporary cache for each operation
 }
 
-// Notes: Could be refactored to be more DRY. But it works.
+// Prototype of Calculator function for all static code
+Calculator.prototype = {
+	error: "calculator is empty",
+	push: function(num) {
+		this.stack.push(num); // Pushes (num) to the stack.
+	},
+	value: function() {
+		return this.stack[this.stack.length - 1]; // Gives the last value of the stack
+	},
+	template: function() {
+		this.cache = []; // Resets the cache
+		if (this.stack.length >= 2) { // If stack is long enough to do operation
+			this.cache.push(this.stack.pop());
+			this.cache.push(this.stack.pop()); // Send variables to cache
+		} else {
+			throw this.error; // Error message
+		}
+	},
+	plus: function() {
+		this.template(); // Template function called
+		this.stack.push(this.cache[1] + this.cache[0]); // Addition
+	},
+	minus: function() {
+		this.template();
+		this.stack.push(this.cache[1] - this.cache[0]); // Subtraction
+	},
+	times: function() {
+		this.template();
+		this.stack.push(this.cache[1] * this.cache[0]); // Multiplication
+	},
+	divide: function() {
+		this.template();
+		this.stack.push(this.cache[1] / this.cache[0]); // Division
+	},
+};
