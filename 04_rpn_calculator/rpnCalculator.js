@@ -39,5 +39,5 @@ Calculator.prototype = {
 	divide: function() {
 		this.template();
 		this.stack.push(this.cache[1] / this.cache[0]); // Division
-	},
+	}
 };
