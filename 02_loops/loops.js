@@ -2,12 +2,14 @@
 
 // Repeats a string mult times
 function repeat (str, mult) {
-	out = "";
+	out = [];
 	for (var i = 0; i < mult; i = i + 1) {
-		out += str;
+		out.push(str);
 	};
-	return out
+	return out.join("");
 }
+
+// NOTE: it is more performant to use an array method.
 
 // Joins strings in an array
 function join (arr, del) {
@@ -15,7 +17,13 @@ function join (arr, del) {
   if (del == undefined) {
     del = "";
   }
-	out = arr.join(del);
+  for (var i = 0; i < arr.length; i++) {
+  	if (i == arr.length - 1) {
+  		out += arr[i];
+  	} else {
+  		out += arr[i] + del;
+  	}
+  }
 	return out;
 }
 

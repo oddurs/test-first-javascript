@@ -6,5 +6,5 @@ function setSomePropertiesOn (obj) {
 	obj.y = 8;
 	obj.onePlus = function (num) {
 		return num + 1;
-	}
+  };
 }
