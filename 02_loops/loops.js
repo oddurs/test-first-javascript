@@ -1,11 +1,11 @@
 // 02_loops
 
 // Repeats a string mult times
-function repeat (str, mult) {
-	out = [];
-	for (var i = 0; i < mult; i = i + 1) {
+function repeat (str, num) {
+	out = []
+	for (var i = 0; i < num; i++) {
 		out.push(str);
-	};
+	}
 	return out.join("");
 }
 
@@ -13,35 +13,31 @@ function repeat (str, mult) {
 
 // Joins strings in an array
 function join (arr, del) {
-	var out = "";
-  if (del == undefined) {
-    del = "";
-  }
-  for (var i = 0; i < arr.length; i++) {
-  	if (i == arr.length - 1) {
-  		out += arr[i];
-  	} else {
-  		out += arr[i] + del;
-  	}
-  }
+	out = "";
+	for (var i = 0; i < arr.length; i++) {
+		out += arr[i]
+		if (i !== arr.length -1 && typeof del !== "undefined") {
+			out += del;
+		}
+	}
 	return out;
 }
 
 // Computes the sum of an array
 function sum (arr) {
-	out = 0;
-	for (i = 0; i < arr.length; i = i + 1) {
-		out += arr[i];
+	var sum = 0;
+	for (var i = 0; i < arr.length; i++) {
+		sum += arr[i];
 	}
-	return out;
+	return sum;
 }
 
 // Loops over and joins into a string with &
-function paramify (hash) {
-	out = [];
-	for (obj in hash) {
-		if (hash.hasOwnProperty(obj)) {
-			out.push(obj + "=" + hash[obj]);
+function paramify (obj) {
+	var out = [];
+	for (key in obj) {
+		if(obj.hasOwnProperty(key)) {
+			out.push(key + "=" + obj[key]);
 		}
 	}
 	return out.sort().join("&");
@@ -51,18 +47,14 @@ function paramify (hash) {
 function factorial (num) {
 	if (num < 0) {
 		return -1;
-	} else if (num == 0) {
+	} else if (num === 0) {
 		return 1;
 	} else {
-		return (num * factorial(num - 1));
+		return num * factorial(num - 1);
 	}
 }
 
 // Concatinates variable amount of arguments into string
 function concat_string () {
-	arr = [];
-	for (var i = 0; i < arguments.length; i = i + 1) {
-		arr.push(arguments[i]);
-	}
-  return (arr.join(""));
+	return join(arguments, "");
 }

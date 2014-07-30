@@ -1,20 +1,20 @@
 // 05_pig_latin
 
-// Takes a string as an argument
-function translate (str) {
-	// Splits each word into elements of an array, arr
-  var arr = str.split(" "),
-  	// Regular expression defined (explained below)
-    reg = /\b([^aeiou]?qu|[^aeiou]{1,3})(.*\b)/i;
-  // Loop through each element of the array
-  for (i = 0; i < arr.length; i++) {
-  	// Convert each element to a string and use replace to find the 
-  	// matching parts and relocate them using backreferences.
-    arr[i] = arr[i].toString().replace(reg, "$2$1") + "ay";
-  }
-  // Join the array with spaces in between.
-  return arr.join(" ");
-}
+// // Takes a string as an argument
+// function translate (str) {
+// 	// Splits each word into elements of an array, arr
+//   var arr = str.split(" "),
+//   	// Regular expression defined (explained below)
+//     reg = /\b([^aeiou]?qu|[^aeiou]{1,3})(.*\b)/i;
+//   // Loop through each element of the array
+//   for (i = 0; i < arr.length; i++) {
+//   	// Convert each element to a string and use replace to find the 
+//   	// matching parts and relocate them using backreferences.
+//     arr[i] = arr[i].toString().replace(reg, "$2$1") + "ay";
+//   }
+//   // Join the array with spaces in between.
+//   return arr.join(" ");
+// }
 
 // So, this took me a while to figure out.
 
@@ -37,3 +37,59 @@ function translate (str) {
 
 // The expression is trailed by i, which indicates that it is inse-
 // nsitive to case.
+
+
+
+
+
+
+
+
+
+function translate (str) {
+  var arr = str.split(" "),
+      reg = /\b/([^aeiou]?qu|[^aeiou]{1,3})(.*\b)/i;
+
+  for (var i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].toString().replace(reg, "$2$1") + "ay";
+  }
+
+  return arr.join(" ");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

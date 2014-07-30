@@ -2,20 +2,16 @@
 
 // Returns the length of a string in words
 function countWords(str) {
-	var arr = str.split(' '); // splits by spaces
-	return arr.length; 
+	return str.split(" ").length;
 }
 
 // nested function within the return
-function makeAdder(num) {
+function makeAdder(num1) {
 	return function(num2) { // closure
-		return num + num2;
+		return num1 + num2;
 	}
 }
 
-function runMeThreeTimes(num) {
-	return num;
-}
 
 // standard for loop that takes a function as an argument
 function forEach(arr, func) {
